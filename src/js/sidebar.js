@@ -72,6 +72,17 @@ const supportBtn = document.querySelector('.support-button');
 let position = 0;
 let isLastSlide = false;
 
+// Видаляємо обробники для ховеру на кнопку
+// if (supportBtn) {
+//   supportBtn.addEventListener('mouseenter', () => {
+//     supportBtn.classList.add('hover');
+//   });
+  
+//   supportBtn.addEventListener('mouseleave', () => {
+//     supportBtn.classList.remove('hover');
+//   });
+// }
+
 const addLeadingZero = value => {
   return String(value).padStart(2, '0');
 };
@@ -109,6 +120,12 @@ const supportBtnClickHandler = () => {
   } else {
     swiper.slideTo(isLastSlide ? 0 : lastIndex);
     isLastSlide = !isLastSlide;
+    // Оновлюємо клас rotate на кнопці
+    if (isLastSlide) {
+      supportBtn.classList.add('rotate');
+    } else {
+      supportBtn.classList.remove('rotate');
+    }
   }
 };
 
@@ -127,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const SBLink = document.querySelector('.sidebar-categories-link');
   const SBLinkList = document.querySelector('.sidebar-categories-list');
   const SBlinks = document.querySelectorAll('.sidebar-categories-link');
   SBLinkList.addEventListener('click', (event) => {

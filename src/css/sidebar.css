@@ -36,6 +36,9 @@ body {
   /* box-shadow: 5px 3px 3px gray; */
   color: #4f2ee8;
 }
+.support-button:hover .support-icon {
+  transform: rotate(180deg);
+}
 .active-link-her{
   border: 0;
   font-family: DM Sans;
@@ -132,6 +135,26 @@ body {
   border: none;
   border-radius: 50%;
   background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.support-button:hover {
+  background-color: #EAC645;
+}
+
+.support-button .support-icon {
+  stroke: transparent;
+  fill: #4F2EE8;
+  transition: transform 0.3s ease;
+}
+
+.support-button.rotate .support-icon {
+  transform: rotate(180deg);
+}
+
+.support-button:hover .support-icon {
+  transform: rotate(180deg);
 }
 
 @media screen and (min-width: 768px) {

@@ -98,8 +98,8 @@
 .close {
     position: absolute;
     z-index: 10;
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
     top: 12px;
     right: 12px;
     display: inline-flex;
@@ -113,14 +113,34 @@
     transition: transform 0.3s ease;
 }
 
-.close:hover,
-.close:focus {
-    fill: #4F2EE8;
-    transform: rotate(90deg);
+.close::before,
+.close::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background-color: #111111;
+    border-radius: 1px;
 }
 
-svg:hover path {
-    stroke: #4F2EE8;
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
+}
+
+.close:hover::before,
+.close:hover::after,
+.close:focus::before,
+.close:focus::after {
+    background-color: #4F2EE8;
+}
+
+.close:hover,
+.close:focus {
+    transform: rotate(90deg);
 }
 
 .button_mod {
@@ -275,8 +295,26 @@ svg:hover path {
     color: #FFFFFF;
 }
 
-.dark-theme .close-icon {
-    fill: #FFFFFF;
+.dark-theme .close {
+    background-color: #202024;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .close::before,
+.dark-theme .close::after {
+    background-color: #ffffff;
+}
+
+.dark-theme .close:hover::before,
+.dark-theme .close:hover::after,
+.dark-theme .close:focus::before,
+.dark-theme .close:focus::after {
+    background-color: #4F2EE8;
+}
+
+.dark-theme .close:hover,
+.dark-theme .close:focus {
+    transform: rotate(90deg);
 }
 
 .dark-theme .notification {

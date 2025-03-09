@@ -13,6 +13,8 @@ import razom from '../img/razom.png';
 import action from '../img/action.png';
 import worldVision from '../img/world.png';
 import prytula from '../img/prytula.png';
+// Import SVG for symbols
+import '../img/symbol-defs.svg';
 
 const supportFunds = [
   { id: 1, title: 'Save the Children', url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis', img: saveTheChildren },
@@ -57,34 +59,6 @@ function SupportUkraine() {
     }
   }, [activeIndex, swiperInstance, isMobile]);
 
-  // Додаємо анімацію при наведенні на кнопку
-  useEffect(() => {
-    const button = scrollButtonRef.current;
-    if (!button) return;
-
-    const addAnimation = () => {
-      if (isScrollDown) {
-        button.classList.add('pulse-down');
-        button.classList.remove('pulse-up');
-      } else {
-        button.classList.add('pulse-up');
-        button.classList.remove('pulse-down');
-      }
-    };
-
-    const removeAnimation = () => {
-      button.classList.remove('pulse-down', 'pulse-up');
-    };
-
-    button.addEventListener('mouseenter', addAnimation);
-    button.addEventListener('mouseleave', removeAnimation);
-
-    return () => {
-      button.removeEventListener('mouseenter', addAnimation);
-      button.removeEventListener('mouseleave', removeAnimation);
-    };
-  }, [isScrollDown]);
-
   const handleButtonClick = () => {
     if (!swiperInstance) return;
 
@@ -106,7 +80,7 @@ function SupportUkraine() {
       <div className="block-title-wrapper">
         <h2 className="block-title">Support Ukraine</h2>
         <svg className="support-title-icon" width="20" height="32">
-          <use href="./img/symbol-defs.svg#symbol"></use>
+          <use href="/src/img/symbol-defs.svg#symbol"></use>
         </svg>
       </div>
       
@@ -150,8 +124,8 @@ function SupportUkraine() {
         onClick={handleButtonClick}
         aria-label={isScrollDown ? "Scroll down" : "Scroll up"}
       >
-        <svg className="support-icon" width="20" height="20">
-          <use href="./img/symbol-defs.svg#arrow"></use>
+        <svg className="support-icon" width="20" height="20" viewBox="0 0 56 32">
+          <path fill="#4f2ee8" d="M25.395 21.134c0.341 0.344 0.746 0.616 1.193 0.803s0.926 0.282 1.41 0.282 0.963-0.096 1.41-0.282c0.447-0.186 0.852-0.459 1.193-0.803l16.794-16.83c0.341-0.344 0.746-0.616 1.193-0.803s0.926-0.282 1.41-0.282c0.484 0 0.963 0.096 1.41 0.282s0.852 0.459 1.193 0.803c0.683 0.687 1.066 1.616 1.066 2.585s-0.383 1.898-1.066 2.585l-16.83 16.83c-2.063 2.06-4.858 3.217-7.773 3.217s-5.711-1.157-7.773-3.217l-16.83-16.83c-0.677-0.683-1.059-1.605-1.063-2.567-0.003-0.483 0.09-0.961 0.272-1.408s0.451-0.853 0.791-1.196c0.341-0.344 0.746-0.616 1.193-0.803s0.926-0.282 1.41-0.282 0.963 0.096 1.41 0.282c0.447 0.186 0.852 0.459 1.193 0.803l16.793 16.83z"></path>
         </svg>
       </button>
     </div>

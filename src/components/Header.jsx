@@ -1,6 +1,7 @@
 import { useState, memo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import '../img/symbol-defs.svg';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,10 +16,10 @@ function Header() {
         <nav className="header-naviganion">
           <Link className="header-logo" to="/">
             <svg className="logo-icon" width="24" height="24">
-              <use href="./img/symbol-defs.svg#icon-logo-1"></use>
+              <use href="/src/img/symbol-defs.svg#icon-logo-1"></use>
             </svg>
             <svg className="logo-text-icon" width="77" height="13">
-              <use href="./img/symbol-defs.svg#icon-Bookshelf"></use>
+              <use href="/src/img/symbol-defs.svg#icon-Bookshelf"></use>
             </svg>
           </Link>
           <ul className="header-menu">
@@ -33,7 +34,7 @@ function Header() {
               } to="/shopping-list">
                 Shopping List
                 <svg className="basket-icon" width="20" height="20">
-                  <use href="./img/symbol-defs.svg#icon-Vector"></use>
+                  <use href="/src/img/symbol-defs.svg#icon-Vector"></use>
                 </svg>
               </NavLink>
             </li>
@@ -46,7 +47,7 @@ function Header() {
           <button type="button" className="signup-btn">
             Sign up
             <svg className="sign-arrow" width="20" height="20">
-              <use href="./img/symbol-defs.svg#icon-arrow-narrow-right"></use>        
+              <use href="/src/img/symbol-defs.svg#icon-arrow-narrow-right"></use>        
             </svg>
           </button>
           
@@ -56,7 +57,7 @@ function Header() {
             onClick={toggleMenu}
           >
             <svg className="menu-open-icon" width="28" height="28">
-              <use href="./img/symbol-defs.svg#icon-align-left"></use>
+              <use href="/src/img/symbol-defs.svg#icon-align-left"></use>
             </svg>
           </button>
           
@@ -66,7 +67,7 @@ function Header() {
             onClick={toggleMenu}
           >
             <svg className="menu-close-icon" width="28" height="28">
-              <use href="./img/symbol-defs.svg#icon-x-close"></use>
+              <use href="/src/img/symbol-defs.svg#icon-x-close"></use>
             </svg>
           </button>
         </div>

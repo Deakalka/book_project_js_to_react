@@ -90,73 +90,14 @@
 
 .support-img {
   filter: brightness(0) invert(1);
-  max-height: 32px;
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .support-link:hover .support-img {
   transform: scale(1.1);
-}
-
-.support-button {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.support-button:hover {
-  background-color: #EAC645;
-}
-
-.support-icon {
-  stroke: #4F2EE8;
-  fill: transparent;
-  transition: transform 0.3s ease;
-}
-
-.support-button.rotate .support-icon {
-  transform: rotate(180deg);
-}
-
-/* Анімації для кнопки прокрутки */
-@keyframes pulse-down {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse-up {
-  0% {
-    transform: translateY(0) rotate(180deg);
-  }
-  50% {
-    transform: translateY(-3px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(0) rotate(180deg);
-  }
-}
-
-.pulse-down {
-  animation: pulse-down 1s infinite;
-}
-
-.pulse-up {
-  animation: pulse-up 1s infinite;
 }
 
 /* Медіа-запити для SupportUkraine */
@@ -543,4 +484,37 @@ input,
 .collection-title,
 .book-category {
   transition: all 0.3s ease;
+}
+
+/* Анімації для кнопки прокрутки */
+@keyframes pulse-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-up {
+  0% {
+    transform: translateY(0) rotate(180deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(180deg);
+  }
+}
+
+.pulse-down {
+  animation: pulse-down 1s infinite;
+}
+
+.pulse-up {
+  animation: pulse-up 1s infinite;
 }

@@ -3,6 +3,7 @@ import { useShoppingList } from '../contexts/ShoppingListContext';
 import amazonIcon from '../img/amazon.png';
 import ibookIcon from '../img/ibook.png';
 import whiteAmazonIcon from '../img/white-amazon.png';
+import '../img/symbol-defs.svg';
 import styles from './BookModal.module.css';
 
 function BookModal({ book, onClose }) {
@@ -75,11 +76,7 @@ function BookModal({ book, onClose }) {
   return (
     <div className={styles.modal} onClick={handleBackdropClick}>
       <div className={`${styles.content} ${styles.bookModalContent} ${showNotification ? styles.expanded : ''}`}>
-        <button type="button" className={styles.close} onClick={onClose}>
-          <svg width="14" height="14" className={styles.closeIcon}>
-            <use href="./img/symbol-defs.svg#icon-x-close"></use>
-          </svg>
-        </button>
+        <button type="button" className={styles.close} onClick={onClose} aria-label="Close modal"></button>
 
         <div className={styles.modalContent}>
           <div className={styles.imgModal}>

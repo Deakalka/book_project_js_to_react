@@ -39,6 +39,10 @@ function App() {
     if (savedTheme === 'dark') {
       document.body.classList.add('dark-theme');
     }
+    
+    // Додатковий код для діагностики проблем з маршрутизацією
+    console.log('Current pathname:', window.location.pathname);
+    console.log('Current URL:', window.location.href);
   }, []);
 
   return (
@@ -56,6 +60,12 @@ function App() {
             <Route path="/shopping-list" element={
               <Suspense fallback={<PageLoader />}>
                 <ShoppingListPage />
+              </Suspense>
+            } />
+            {/* Додаткові маршрути для обробки інших шляхів */}
+            <Route path="*" element={
+              <Suspense fallback={<PageLoader />}>
+                <HomePage />
               </Suspense>
             } />
           </Route>
