@@ -1,44 +1,96 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ onThemeToggle }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  useEffect(() => {
+    // Перевірка поточної теми при завантаженні
+    const savedTheme = localStorage.getItem('theme');
+    setDarkTheme(savedTheme === 'dark');
+  }, []);
 
   const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
+    setMenuOpen(prevState => !prevState);
+  };
+
+  const handleThemeToggle = () => {
+    setDarkTheme(prevState => !prevState);
+    onThemeToggle();
   };
 
   return (
     <header className="header">
       <div className="container header-container">
-        <Link to="/" className="logo">Bookshelf</Link>
-        
-        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
-          <ul className="nav-list">
-            <li className="nav-item">
-              <NavLink to="/" className={({ isActive }) => 
-                isActive ? "nav-link active" : "nav-link"
-              }>
-                Головна
-              </NavLink>
+        <nav className="header-naviganion">
+          <Link className="header-logo" to="/">
+            <svg className="logo-icon" width="24" height="24">
+              <use href="./img/symbol-defs.svg#icon-logo-1"></use>
+            </svg>
+            <svg className="logo-text-icon" width="77" height="13">
+              <use href="./img/symbol-defs.svg#icon-Bookshelf"></use>
+            </svg>
+          </Link>
+          <ul className="header-menu">
+            <li className="header-item">
+              <NavLink className={({ isActive }) => 
+                isActive ? "header-menu-link activeButton" : "header-menu-link"
+              } to="/">Home</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/shopping-list" className={({ isActive }) => 
-                isActive ? "nav-link active" : "nav-link"
-              }>
-                Список покупок
+            <li className="header-item">
+              <NavLink className={({ isActive }) => 
+                isActive ? "header-menu-shopping activeButton" : "header-menu-shopping"
+              } to="/shopping-list">
+                Shopping List
+                <svg className="basket-icon" width="20" height="20">
+                  <use href="./img/symbol-defs.svg#icon-Vector"></use>
+                </svg>
               </NavLink>
             </li>
           </ul>
         </nav>
+        
+        <div className="box-btn">
+          <div className="theme-switch">
+            <input 
+              className="theme-switch-input" 
+              type="checkbox" 
+              id="checkbox" 
+              checked={darkTheme}
+              onChange={handleThemeToggle}
+            />
+            <label className="theme-toggle" htmlFor="checkbox"></label>
+            <div className="slider"></div>
+          </div>
 
-        <button 
-          className="menu-toggle"
-          onClick={toggleMenu}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? 'Закрити' : 'Меню'}
-        </button>
+          <button type="button" className="signup-btn">
+            Sign up
+            <svg className="sign-arrow" width="20" height="20">
+              <use href="./img/symbol-defs.svg#icon-arrow-narrow-right"></use>        
+            </svg>
+          </button>
+          
+          <button 
+            type="button" 
+            className={`menu-open-btn ${menuOpen ? 'hidden' : ''}`}
+            onClick={toggleMenu}
+          >
+            <svg className="menu-open-icon" width="28" height="28">
+              <use href="./img/symbol-defs.svg#icon-align-left"></use>
+            </svg>
+          </button>
+          
+          <button 
+            type="button" 
+            className={`menu-close-btn ${menuOpen ? '' : 'hidden'}`}
+            onClick={toggleMenu}
+          >
+            <svg className="menu-close-icon" width="28" height="28">
+              <use href="./img/symbol-defs.svg#icon-x-close"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
   );

@@ -1,33 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
+import { getCategories } from '../services/api';
+import CategoriesSkeleton from './CategoriesSkeleton';
 
 function Categories({ activeCategory, onCategoryChange }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Імітація отримання категорій з API
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        // Тут буде реальний виклик API
-        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-        await delay(800);
-        
-        // Імітація даних категорій
-        setCategories([
-          'Всі книги',
-          'Бестселери',
-          'Нові книги',
-          'Фантастика',
-          'Драма',
-          'Детектив',
-          'Романи',
-          'Наукпоп',
-          'Бізнес',
-          'Мистецтво'
-        ]);
+        const response = await getCategories();
+        setCategories(['All categories', ...response.map(cat => cat.list_name)]);
       } catch (error) {
         console.error('Помилка при завантаженні категорій:', error);
+        setCategories(['All categories']);
       } finally {
         setLoading(false);
       }
@@ -36,21 +23,28 @@ function Categories({ activeCategory, onCategoryChange }) {
     fetchCategories();
   }, []);
 
+  const handleCategoryClick = useCallback((e, category) => {
+    e.preventDefault();
+    onCategoryChange(category);
+  }, [onCategoryChange]);
+
   return (
-    <div className="categories">
-      <h2>Категорії книг</h2>
+    <div className="sidebar-categories">
+      {/* <h2 className="sidebar-title">Categories</h2> */}
       
       {loading ? (
-        <p>Завантаження категорій...</p>
+        <CategoriesSkeleton />
       ) : (
-        <ul className="categories-list">
+        <ul className="sidebar-categories-list">
           {categories.map(category => (
-            <li 
-              key={category} 
-              className={`category-item ${activeCategory === category ? 'active' : ''}`}
-              onClick={() => onCategoryChange(category)}
-            >
-              {category}
+            <li key={category} className="sidebar-categories-item">
+              <a 
+                href="#" 
+                className={`sidebar-categories-link ${activeCategory === category ? 'active' : ''}`}
+                onClick={(e) => handleCategoryClick(e, category)}
+              >
+                {category}
+              </a>
             </li>
           ))}
         </ul>
@@ -59,4 +53,4 @@ function Categories({ activeCategory, onCategoryChange }) {
   );
 }
 
-export default Categories; 
+export default memo(Categories); 

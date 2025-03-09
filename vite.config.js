@@ -4,6 +4,8 @@ import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig(({ command }) => {
   return {
+    root: 'src',
+    publicDir: '../public',
     plugins: [
       react(),
       FullReload(['./src/**/*.jsx']),
@@ -13,7 +15,7 @@ export default defineConfig(({ command }) => {
     },
     build: {
       sourcemap: true,
-      outDir: 'dist',
+      outDir: '../dist',
     }
   };
 });

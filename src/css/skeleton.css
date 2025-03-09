@@ -1,0 +1,147 @@
+/* Базові стилі для скелетонів */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-animate {
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgba(129, 129, 129, 0.1);
+  }
+  50% {
+    background-color: rgba(129, 129, 129, 0.2);
+  }
+  100% {
+    background-color: rgba(129, 129, 129, 0.1);
+  }
+}
+
+/* Скелетон для книги */
+.book-cover-skeleton {
+  width: 100%;
+  height: 256px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 8px;
+}
+
+.book-title-skeleton {
+  width: 80%;
+  height: 20px;
+  margin-bottom: 8px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+.book-author-skeleton {
+  width: 60%;
+  height: 16px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+/* Скелетон для списку покупок */
+.slist-card-picture-skeleton {
+  width: 100px;
+  height: 142px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 8px;
+}
+
+.slist-book-header-skeleton {
+  width: 70%;
+  height: 24px;
+  margin-bottom: 8px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+.slist-book-category-skeleton {
+  width: 40%;
+  height: 16px;
+  margin-bottom: 8px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+.slist-book-description-skeleton {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 8px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+.slist-book-author-skeleton {
+  width: 50%;
+  height: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+.slist-nav-skeleton {
+  width: 120px;
+  height: 24px;
+  background-color: rgba(129, 129, 129, 0.1);
+  border-radius: 4px;
+}
+
+/* Темна тема */
+.dark-theme .skeleton-animate {
+  animation: skeleton-loading-dark 1.5s infinite;
+}
+
+@keyframes skeleton-loading-dark {
+  0% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Адаптивність */
+@media screen and (min-width: 768px) {
+  .book-cover-skeleton {
+    height: 316px;
+  }
+
+  .slist-card-picture-skeleton {
+    width: 116px;
+    height: 165px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .book-cover-skeleton {
+    height: 256px;
+  }
+
+  .slist-card-picture-skeleton {
+    width: 130px;
+    height: 185px;
+  }
+}
+
+/* Анімація появи скелетонів */
+.skeleton-fade-in {
+  animation: skeletonFadeIn 0.3s ease-in;
+}
+
+@keyframes skeletonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
