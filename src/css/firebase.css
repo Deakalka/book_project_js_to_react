@@ -1,0 +1,82 @@
+.form-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4f2ee8;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none;
+  z-index: 10;
+}
+
+.form {
+  background-color: white;
+  width: 335px;
+  height: 384px;
+  padding: 20px;
+  padding-top: 40px;
+  border-radius: 10px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close-btn {
+  width: 20px;
+  height: 20px;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  border: 2px solid #111111;
+  border-radius: 40px;
+  padding: 16px 173px 16px 24px;
+  width: 295px;
+  height: 50px;
+  margin-bottom: 24px;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  display: block;
+}
+input::placeholder {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 112%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.firebase-btn {
+  fill: none;
+  stroke: none;
+  fill: #111111;
+  stroke: #111111;
+}
+
+.signup-btn-form {
+  border-radius: 40px;
+  padding: 16px 116px;
+  width: 294px;
+  height: 50px;
+  background: #111111;
+  color: #f3f3f3;
+}

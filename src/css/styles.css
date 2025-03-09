@@ -1,0 +1,32 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+@import url('./reset.css');
+@import url('./header.css');
+@import url('./firebase.css');
+@import url('./modal_wind.css');
+@import url('./loader.css');
+@import url('./menu.css');
+@import url('./pagination.css');
+@import url('./scroll-up.css');
+@import url('./shoppingList.css');
+@import url('./sidebar.css');
+@import url('./themesToggle.css');
+@import url('./categories.css');
+@import url('./home.css');
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #111111;
+}
+.container {
+  /* width: 375px; */
+  margin: 0 auto;
+  padding: 0 20px;
+}

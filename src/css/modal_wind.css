@@ -1,0 +1,230 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+}
+.content{
+    position: relative;
+    top: -28px;
+}
+.modal-content {
+    border: 2px solid #111111;
+    border-radius: 18px;
+    width: 335px;
+    height: 762px;
+    box-sizing: border-box;
+    transition: height 0.3s ease; 
+    background: white;
+
+    margin: 10% auto;
+    padding: 40px 24px;
+}
+.expanded{
+    height: 806px;
+}
+.img_modal{
+    border-radius: 8px;
+    width: 287px;
+    height: 408px;
+    margin-bottom: 14px;
+}  
+.book_name{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 112%;
+    letter-spacing: -0.04em;
+    color: var(--black);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.author{
+    font-family: var(--font-family);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.04em;
+    color: #b4afaf;
+    margin-bottom: 20px;
+}
+.description{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.04em;
+    color: var(--black);
+}
+.links{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 14px 0;
+}
+.logo{
+    transition: filter 0.3s ease; 
+    filter: grayscale(100%)
+}
+.logo:hover {
+    filter:drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35)) grayscale(100%);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #111111;
+    position: relative;
+    top: -32px;
+    right: -16px;
+    /* top: -570px;
+    right: -10px; */
+    width:24px;
+    height:24px;
+}
+.close:hover,
+.close:focus {
+    color: #4F2EE8;
+}
+svg:hover path {
+    stroke: #4F2EE8; 
+}
+.button_mod{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--black);
+    background-color: #ffffff;
+
+    border-radius: 40px;
+    padding: 14px 16px;
+    min-width: 211px;
+    height: 46px;
+
+
+    border: 3px solid #4F2EE8;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+
+}
+.button_mod:hover, .button_mod:focus{
+    color:#ffffff;
+    background: #4F2EE8;
+}
+.button_place{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center; 
+   /* margin-top: 40px; */
+   margin-bottom: 8px;
+
+}
+.notification{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: rgba(17, 17, 17, 0.5);
+
+    margin: 0px auto;
+    width: 250px;
+}
+@media screen and (min-width:768px) {
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        
+    }
+    .content{
+        display: flex;
+        gap: 24px;
+        position: relative;
+        top: -0;
+    }
+    .modal-content {
+        margin: 15% auto;
+        padding: 40px;
+        width: 579px;
+        height: 465px;
+        position: relative;
+        top: -68px;
+    }
+    .expanded{
+        height: 501px;
+    }
+    .text{
+        padding: 0 0;
+        margin: 0;
+    }    
+    .img_modal{
+        width:192px;
+        height:281px;
+        margin-bottom: 0px;
+    }  
+    
+    .book_name{
+        font-size: 24px;
+        line-height: 117%;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .author{
+        font-size: 14px;
+        line-height: 129%;
+        margin-bottom: 16px;
+
+    }
+    .links{
+        margin: 20px 0;
+    }
+    .close {
+        top:-20px;
+        right: -24px;
+        width:28px;
+        height:28px;
+    }
+    .button_mod{
+        padding:20px auto; 
+        width: 499px;
+        height: 64px;
+        font-size: 18px;
+        line-height: 133%;
+    }
+
+    .button_place{
+       margin-top: 40px;
+       margin-bottom: 8px;
+       
+    }
+    .notification{
+        width: 320px;
+    }
+}
+.test{
+    position: fixed;    
+    top: 100px;
+    right: 0;
+    border: 1px solid red;
+}

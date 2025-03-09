@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+.home-page-container {
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.collection-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1875;
+  letter-spacing: -0.04em;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+.collection-title span {
+  color: #4f2ee8;
+}
+
+.book-category {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #b4afaf;
+  margin-bottom: 18px;
+}
+
+.book-cover {
+  border-radius: 8px;
+  width: 280px;
+  height: 485px;
+
+}
+
+.book-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.125;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-author {
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.04em;
+  color: #b4afaf;
+}
+
+.top-books {
+  margin-bottom: 8px;
+}
+
+.book-card-btn {
+  padding: 14px 28px;
+  border: none;
+  border: 2px solid blue;
+  border-radius: 40px;
+  margin-left: auto;
+  text-transform: uppercase;
+  background-color: transparent;
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #111;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.book-card-btn:focus,
+.book-card-btn:hover {
+  background-color: #4f2ee8;
+  color: #ffffff;
+}
+
+.book-category-item:not(:last-child) {
+  margin-bottom: 40px;
+}
+.book-card {
+ 
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 0.6);
+}
+
+.book-card:hover,
+.book-card:focus {
+  transform: scale(1.07);
+}
+
+.book-card-hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.view-more {
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 27%;
+  bottom: 0;
+  left: 0;
+  background-color: #eac645;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 0.6),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 0.6);
+
+  opacity: 0;
+}
+
+.book-card:hover .view-more {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.view-more-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #111;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px) {
+  .book-card:nth-child(n + 2) {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .home-page-container {
+    padding: 40px 32px;
+    width: 768px;
+    gap: 100px;
+  }
+  .collection-title {
+    font-size: 48px;
+    line-height: 1.08333;
+  }
+
+  .book-cover {
+    width: 218px;
+    height: 316px;
+  }
+
+  .top-books {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+
+  .book-card {
+    width: 218px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .book-card:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .home-page-container {
+    flex-direction: row;
+    gap: 40px;
+    width: 1440px;
+    padding: 40px 24px;
+  }
+  .best-books-gallery {
+    width: 996px;
+  }
+  .top-books {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .book-cover {
+    width: 180px;
+    height: 256px;
+  }
+
+  .book-card {
+    width: 180px;
+  }
+}

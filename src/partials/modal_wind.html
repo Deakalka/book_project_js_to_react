@@ -1,0 +1,74 @@
+<!-- TEST onclick="loadBookData('643282b1e85766588626a0c2')"   id="openModalBtn"-->
+<!-- <a class="test" id="openModalBtn" data-book-id="643282b1e85766588626a0c2">Відкрити вікно</a> -->
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 7L7 21M7 7L21 21"
+          stroke="#111111"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+    <div class="content">
+      <img
+        alt="Book cover"
+        class="img_modal"
+        src=""
+        width="192px"
+        height="281px"
+      />
+
+      <div class="text">
+        <h3 class="book_name"></h3>
+        <p class="author"></p>
+        <p class="description"></p>
+        <ul class="links">
+          <li>
+            <a href="" target="_blank" name="Amazon"
+              ><img
+                width="62px"
+                height="19px"
+                class="logo"
+                src="./img/amazon.png"
+                alt="Amazon"
+            /></a>
+          </li>
+          <li>
+            <a href="" target="_blank" name="Apple Books"
+              ><img
+                width="33px"
+                height="32px"
+                class="logo"
+                src="./img/ibook.png"
+                alt="Apple Books"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <span class="close" id="closeModalBtn">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 7L7 21M7 7L21 21" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span> -->
+
+    <div class="button_place">
+      <button class="button_mod" id="shoppingListBtn">
+        Add to shopping list
+      </button>
+    </div>
+    <div id="notification" class="notification"></div>
+  </div>
+</div>
