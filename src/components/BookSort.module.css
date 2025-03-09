@@ -1,0 +1,123 @@
+.sortContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.sortLabel {
+  font-size: 14px;
+  color: #111111;
+  font-weight: 500;
+}
+
+.sortDropdown {
+  position: relative;
+  min-width: 150px;
+  z-index: 100;
+}
+
+.sortSelected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 1px solid #4F2EE8;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #111111;
+  transition: all 0.2s ease;
+}
+
+.sortSelected:hover {
+  background-color: #f5f5f5;
+}
+
+.sortArrow {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+  color: #4F2EE8;
+}
+
+.sortArrowUp {
+  transform: rotate(180deg);
+}
+
+.sortOptions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  animation: slideDown 0.2s ease forwards;
+}
+
+.sortOption {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.sortOption:hover {
+  background-color: #f5f5f5;
+}
+
+.sortOptionSelected {
+  background-color: #EAC645;
+  color: #111111;
+  font-weight: 500;
+}
+
+:global(.dark-theme) .sortLabel {
+  color: #ffffff;
+}
+
+:global(.dark-theme) .sortSelected {
+  background-color: #202024;
+  border-color: #4F2EE8;
+  color: #ffffff;
+}
+
+:global(.dark-theme) .sortSelected:hover {
+  background-color: #2b2b31;
+}
+
+:global(.dark-theme) .sortOptions {
+  background-color: #202024;
+  border-color: #333333;
+}
+
+:global(.dark-theme) .sortOption:hover {
+  background-color: #2b2b31;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .sortContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .sortDropdown {
+    width: 100%;
+  }
+} 

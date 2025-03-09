@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback, memo } from 'react';
+import { useState, useEffect, useCallback, memo, useMemo } from 'react';
 import Categories from '../components/Categories';
 import BookModal from '../components/BookModal';
 import SupportUkraine from '../components/SupportUkraine';
 import BookListSkeleton from '../components/BookListSkeleton';
+import BookSort from '../components/BookSort';
 import { getBestsellersBooks, getBooksByCategory, getBookById } from '../services/api';
 
 // Мемоізований компонент для лінивого завантаження зображень книги
@@ -35,6 +36,7 @@ function HomePage() {
   const [activeCategory, setActiveCategory] = useState('All categories');
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedBookData, setSelectedBookData] = useState(null);
+  const [sortOption, setSortOption] = useState('default');
 
   // Завантаження книг при зміні категорії
   useEffect(() => {
@@ -115,6 +117,51 @@ function HomePage() {
     setSelectedBookData(null);
   }, []);
 
+  // Обробник для зміни сортування
+  const handleSortChange = useCallback((option) => {
+    setSortOption(option);
+  }, []);
+
+  // Сортування книг
+  const sortedBooks = useMemo(() => {
+    if (!books || books.length === 0) return books;
+
+    const sortBooks = (booksToSort) => {
+      if (!Array.isArray(booksToSort)) return booksToSort;
+
+      return [...booksToSort].sort((a, b) => {
+        switch (sortOption) {
+          case 'title-asc':
+            return a.title?.localeCompare(b.title || '');
+          case 'title-desc':
+            return b.title?.localeCompare(a.title || '');
+          case 'author-asc':
+            return a.author?.localeCompare(b.author || '');
+          case 'author-desc':
+            return b.author?.localeCompare(a.author || '');
+          default:
+            return 0;
+        }
+      });
+    };
+
+    // Якщо книги згруповані за категоріями (на головній сторінці)
+    if (activeCategory === 'All categories') {
+      return books.map(category => {
+        if (category.books && Array.isArray(category.books)) {
+          return {
+            ...category,
+            books: sortBooks(category.books)
+          };
+        }
+        return category;
+      });
+    }
+
+    // Якщо книги у плоскому списку (у конкретній категорії)
+    return sortBooks(books);
+  }, [books, sortOption, activeCategory]);
+
   // Рендеринг списку кращих книг по категоріям
   const renderTopBooks = () => {
     // Якщо завантаження - відображаємо скелетони
@@ -129,16 +176,19 @@ function HomePage() {
     }
     
     // Перевіряємо, чи дані є масивом і чи не порожній він
-    if (!Array.isArray(books) || books.length === 0) {
+    if (!Array.isArray(sortedBooks) || sortedBooks.length === 0) {
       return <p>Немає доступних книг</p>;
     }
 
     return (
       <div className="best-books-container">
-        <h1 className="collection-title">Best Sellers <span>Books</span></h1>
+        <div className="books-header">
+          <h1 className="collection-title">Best Sellers <span>Books</span></h1>
+          <BookSort onSortChange={handleSortChange} />
+        </div>
         
         <ul className="top-books-all">
-          {books.map((categoryBooks, categoryIndex) => (
+          {sortedBooks.map((categoryBooks, categoryIndex) => (
             <li key={categoryBooks?.list_name || `category-${categoryIndex}`} className="book-category-item">
               <p className="book-category">{categoryBooks?.list_name || 'Unknown Category'}</p>
               
@@ -152,7 +202,7 @@ function HomePage() {
                       onClick={() => book?._id && openBookModal(book._id)}
                     >
                       <div className="book-card-hover">
-                        <LazyBookImage 
+                        <img 
                           className="book-cover" 
                           src={book?.book_image || 'placeholder.jpg'} 
                           alt={book?.title || 'Book cover'}
@@ -198,18 +248,21 @@ function HomePage() {
       );
     }
 
-    if (!Array.isArray(books) || books.length === 0) {
+    if (!Array.isArray(sortedBooks) || sortedBooks.length === 0) {
       return <p>Немає доступних книг у цій категорії</p>;
     }
 
     return (
       <div className="best-books-container">
-        <h2 className="collection-title">
-          {removeLastWord(activeCategory)} <span>{getLastWord(activeCategory)}</span>
-        </h2>
+        <div className="books-header">
+          <h2 className="collection-title">
+            {removeLastWord(activeCategory)} <span>{getLastWord(activeCategory)}</span>
+          </h2>
+          <BookSort onSortChange={handleSortChange} />
+        </div>
         
         <ul className="category-books-cat">
-          {books.map((book, index) => (
+          {sortedBooks.map((book, index) => (
             <li 
               key={book?._id || `category-book-${index}`} 
               className="book-card-category" 
@@ -217,7 +270,7 @@ function HomePage() {
               onClick={() => book?._id && openBookModal(book._id)}
             >
               <div className="book-thumb">
-                <LazyBookImage 
+                <img 
                   className="book-cover-cat" 
                   src={book?.book_image || 'placeholder.jpg'} 
                   alt={book?.title || 'Book cover'} 

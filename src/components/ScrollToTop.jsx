@@ -1,4 +1,5 @@
 import { useEffect, useState, memo } from 'react';
+import styles from './ScrollToTop.module.css';
 
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,7 +28,7 @@ function ScrollToTop() {
 
   return (
     <button 
-      className={`scroll-to-top ${isVisible ? 'visible' : ''}`}
+      className={`${styles.scrollToTop} ${isVisible ? styles.visible : ''}`}
       onClick={scrollToTop}
       aria-label="Прокрутити до початку сторінки"
       title="Прокрутити до початку сторінки"

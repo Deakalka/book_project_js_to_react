@@ -1,0 +1,137 @@
+/* Стилі для сторінки списку покупок */
+.slistSection {
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.shoppingListContent {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+  
+  .shoppingListContent {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 24px;
+  }
+}
+
+.shoppingSupport {
+  flex: 0 0 300px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .shoppingSupport {
+    margin-bottom: 0;
+  }
+}
+
+.shoppingMain {
+  flex: 1;
+}
+
+.slistTittleContainer {
+  margin-bottom: 40px;
+}
+
+.slistHeader {
+  font-size: 32px;
+  color: #111111;
+  font-weight: 700;
+  line-height: 1.19;
+  letter-spacing: -1.28px;
+}
+
+:global(.dark-theme) .slistHeader {
+  color: #ffffff;
+}
+
+.slistHeaderSpan {
+  color: #4F2EE8;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #4F2EE8;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.slistDemoThumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.slistDemoText {
+  text-align: center;
+  font-size: 18px;
+  color: #909090;
+  margin-bottom: 20px;
+  max-width: 500px;
+  line-height: 1.33;
+  letter-spacing: -0.36px;
+  font-weight: 400;
+}
+
+:global(.dark-theme) .slistDemoText {
+  color: #c5c5c5;
+}
+
+.slistCardSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .slistHeader {
+    font-size: 48px;
+    line-height: 1.08;
+  }
+  
+  .slistDemoText {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+  
+  .slistCardSection {
+    gap: 24px;
+  }
+} 

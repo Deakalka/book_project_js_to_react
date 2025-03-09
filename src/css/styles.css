@@ -179,7 +179,7 @@ body {
   padding: 0;
   background-color: white;
   color: #111111;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .container {
@@ -233,6 +233,7 @@ body {
 .dark-theme {
   background-color: #202024;
   color: #ffffff;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .dark-theme .book-name,
@@ -510,4 +511,36 @@ button:hover {
 
 .dark-theme .scroll-to-top:hover {
   background-color: #6a48f0;
+}
+
+/* Стилі для заголовку з сортуванням */
+.books-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Анімовані переходи між світлою та темною темами */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark-theme {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.book-card, 
+.book-card-category,
+.book-name,
+.book-author,
+.book-namne-cat,
+button, 
+input,
+.header,
+.collection-title,
+.book-category {
+  transition: all 0.3s ease;
 }

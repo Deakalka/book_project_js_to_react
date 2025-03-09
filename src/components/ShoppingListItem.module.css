@@ -1,0 +1,225 @@
+/* Стилі для елемента списку покупок */
+.slistCardList {
+  width: 100%;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.slistCardItem {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  list-style-type: none;
+  gap: 14px;
+}
+
+:global(.dark-theme) .slistCardItem {
+  background-color: #202024;
+  border-color: rgba(79, 46, 232, 0.4);
+}
+
+.slistDelBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  background-color: #4F2EE8;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.slistDelBtn:hover {
+  background-color: #3E1FD0;
+}
+
+.slistDelBtn::before, .slistDelBtn::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: white;
+}
+
+.slistDelBtn::before {
+  transform: rotate(45deg);
+}
+
+.slistDelBtn::after {
+  transform: rotate(-45deg);
+}
+
+.slistCardPicture {
+  flex: 0 0 100px;
+  height: 142px;
+  margin-right: 14px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.slistBookImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slistInfoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slistBookHeader {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #111111;
+  font-weight: 700;
+  line-height: 1.125;
+  letter-spacing: -0.64px;
+}
+
+:global(.dark-theme) .slistBookHeader {
+  color: #ffffff;
+}
+
+.slistBookCategory {
+  font-size: 12px;
+  color: #B4AFAF;
+  margin-bottom: 8px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.03em;
+}
+
+.slistBookDescription {
+  font-size: 14px;
+  line-height: 1.29;
+  color: #111111;
+  margin-bottom: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  letter-spacing: -0.04em;
+  max-height: 53px;
+}
+
+:global(.dark-theme) .slistBookDescription {
+  color: #ffffff;
+}
+
+.slistBookAutor {
+  font-size: 12px;
+  color: #B4AFAF;
+  font-style: italic;
+  margin-bottom: 16px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: -0.04em;
+}
+
+.slistNav {
+  margin-top: auto;
+}
+
+.slistNavList {
+  display: flex;
+  gap: 16px;
+  list-style-type: none;
+  padding: 0;
+  align-items: center;
+}
+
+.slistNavItem {
+  display: flex;
+}
+
+.slistNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.imgAmazone, .imgApp {
+  height: 32px;
+  transition: all 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.slistNavLink:hover .imgAmazone,
+.slistNavLink:hover .imgApp {
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+  transform: scale(1.05);
+}
+
+:global(.dark-theme) .imgAmazone {
+  filter: brightness(0) invert(1);
+}
+
+:global(.dark-theme) .slistNavLink:hover .imgAmazone,
+:global(.dark-theme) .slistNavLink:hover .imgApp {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .slistCardItem {
+    padding: 24px;
+    gap: 24px;
+  }
+  
+  .slistCardPicture {
+    flex: 0 0 116px;
+    height: 165px;
+    margin-right: 0;
+  }
+  
+  .slistBookHeader {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  
+  .slistDelBtn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .slistBookAutor {
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slistCardPicture {
+    flex: 0 0 130px;
+    height: 185px;
+  }
+
+  .slistInfoContainer {
+    padding-right: 50px;
+  }
+} 

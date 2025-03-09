@@ -1,0 +1,285 @@
+/* Базові стилі для модального вікна */
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.content {
+  width: 335px;
+  max-height: 100vh;
+  background-color: #F6F6F6;
+  border-radius: 18px;
+  border: 2px solid #111111;
+  overflow: auto;
+  padding: 40px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookModalContent {
+  animation: modalResize 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+.expanded {
+  height: auto;
+}
+
+/* Стилі для темної теми */
+:global(.dark-theme) .content {
+  background-color: #202024;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 2;
+}
+
+.closeIcon {
+  fill: #111111;
+}
+
+:global(.dark-theme) .closeIcon {
+  fill: #ffffff;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  order: 1;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 0;
+  }
+  
+  .content {
+    width: 579px;
+    padding: 40px;
+  }
+  
+  .modalContent {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.imgModal {
+  width: 287px;
+  height: 408px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .imgModal {
+    margin-bottom: 0;
+    width: 192px;
+    height: 281px;
+  }
+}
+
+.imgModal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.text {
+  flex: 1;
+}
+
+.bookName {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.125;
+  letter-spacing: -0.64px;
+  color: #111111;
+}
+
+@media (min-width: 768px) {
+  .bookName {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+}
+
+:global(.dark-theme) .bookName {
+  color: #ffffff;
+}
+
+.author {
+  font-size: 12px;
+  color: #B4AFAF;
+  font-style: italic;
+  margin-bottom: 18px;
+  line-height: 1.17;
+  letter-spacing: -0.48px;
+}
+
+@media (min-width: 768px) {
+  .author {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.29;
+  margin-bottom: 14px;
+  color: #111111;
+  letter-spacing: -0.56px;
+}
+
+:global(.dark-theme) .description {
+  color: #ffffff;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  height: 16px;
+}
+
+.modalShoppingLink img {
+  transition: all 0.3s ease;
+  /* Світла тема, звичайний стан */
+  filter: grayscale(100%);
+  height: 16px;
+}
+
+.modalShoppingLink:hover img {
+  /* Світла тема, стан hover */
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+  transform: scale(1.05);
+}
+
+/* Темна тема, для Apple Books у звичайному стані */
+:global(.dark-theme) .modalAppleIcon {
+  filter: grayscale(100%);
+}
+
+/* Темна тема, для Amazon у звичайному стані */
+:global(.dark-theme) .modalAmazonIcon {
+  filter: brightness(0) invert(1);
+}
+
+/* Темна тема, стан hover для обох магазинів */
+:global(.dark-theme) .modalShoppingLink:hover img {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .logo, .modalShoppingLink img {
+    height: 28px;
+  }
+}
+
+.buttonPlace {
+  width: 100%;
+  margin-top: 10px;
+  order: 2;
+  margin-bottom: 15px;
+}
+
+.buttonMod {
+  width: 100%;
+  padding: 14px;
+  background-color: #4F2EE8;
+  color: #ffffff;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+}
+
+.buttonMod:hover {
+  background-color: #3E1FD0;
+}
+
+.notificationContainer {
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  order: 3;
+}
+
+.visible {
+  max-height: 100px;
+  opacity: 1;
+  margin: 0 0 15px 0;
+  padding: 0 10px;
+}
+
+.notification {
+  color: #111111;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+@media (min-width: 768px) {
+  .notification {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+
+:global(.dark-theme) .notification {
+  color: #b4afaf;
+}
+
+@keyframes modalResize {
+  from {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+} 

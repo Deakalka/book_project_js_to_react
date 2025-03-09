@@ -1,23 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, memo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
-function Header({ onThemeToggle }) {
+function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(false);
-
-  useEffect(() => {
-    // Перевірка поточної теми при завантаженні
-    const savedTheme = localStorage.getItem('theme');
-    setDarkTheme(savedTheme === 'dark');
-  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(prevState => !prevState);
-  };
-
-  const handleThemeToggle = () => {
-    setDarkTheme(prevState => !prevState);
-    onThemeToggle();
   };
 
   return (
@@ -52,17 +41,7 @@ function Header({ onThemeToggle }) {
         </nav>
         
         <div className="box-btn">
-          <div className="theme-switch">
-            <input 
-              className="theme-switch-input" 
-              type="checkbox" 
-              id="checkbox" 
-              checked={darkTheme}
-              onChange={handleThemeToggle}
-            />
-            <label className="theme-toggle" htmlFor="checkbox"></label>
-            <div className="slider"></div>
-          </div>
+          <ThemeToggle />
 
           <button type="button" className="signup-btn">
             Sign up
@@ -96,4 +75,4 @@ function Header({ onThemeToggle }) {
   );
 }
 
-export default Header; 
+export default memo(Header); 

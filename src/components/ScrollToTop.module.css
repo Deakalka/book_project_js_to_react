@@ -1,0 +1,61 @@
+/* Стилі для кнопки повернення наверх */
+.scrollToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #4f2ee8;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  z-index: 99;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  border: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scrollToTop:hover {
+  transform: translateY(-5px);
+  background-color: #3e20c9;
+}
+
+.scrollToTop svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+:global(.dark-theme) .scrollToTop {
+  background-color: #4f2ee8;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+:global(.dark-theme) .scrollToTop:hover {
+  background-color: #6a48f0;
+}
+
+@media (max-width: 767px) {
+  .scrollToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .scrollToTop svg {
+    width: 20px;
+    height: 20px;
+  }
+} 

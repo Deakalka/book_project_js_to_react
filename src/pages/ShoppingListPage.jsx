@@ -1,125 +1,10 @@
 import { useShoppingList } from '../contexts/ShoppingListContext';
 import SupportUkraine from '../components/SupportUkraine';
-import amazonIcon from '../img/amazon.png';
-import ibookIcon from '../img/ibook.png';
 import booksImage from '../img/books.png';
-import whiteAmazonIcon from '../img/white-amazon.png';
+import ShoppingListItem from '../components/ShoppingListItem';
+import Pagination from '../components/Pagination';
 import { useCallback, memo, useState, useEffect } from 'react';
-
-// Мемоізований компонент для рендерингу окремої книги
-const ShoppingListItem = memo(({ book, onRemove, isDarkTheme }) => (
-  <div className="slist-card-list">
-    <li className="slist-card-item">
-      <button 
-        type="button" 
-        data-id={book._id} 
-        className="slist-del-btn js-slist-del-btn"
-        onClick={() => onRemove(book._id)}
-      ></button>
-      
-      <div className="slist-card-picture">
-        <img 
-          src={book.book_image} 
-          className="slist-book-img" 
-          alt={book.title} 
-        />
-      </div>
-      
-      <div className="slist-info-container">
-        <h3 className="slist-book-header">{book.title}</h3>
-        <h4 className="slist-book-category">{book.list_name}</h4>
-        <p className="slist-book-description">
-          {book.description || 'No description available'}
-        </p>
-        <h5 className="slist-book-autor">{book.author}</h5>
-
-        <div className="slist-nav">
-          <ul className="slist-nav-list">
-            {book.buy_links && (
-              <>
-                <li className="slist-nav-item">
-                  <a 
-                    href={book.buy_links.find(link => link.name === 'Amazon')?.url || '#'} 
-                    className="slist-nav-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img 
-                      className="img-amazone logo" 
-                      src={isDarkTheme ? whiteAmazonIcon : amazonIcon} 
-                      alt="Amazon" 
-                    />
-                  </a>
-                </li>
-                <li className="slist-nav-item">
-                  <a 
-                    href={book.buy_links.find(link => link.name === 'Apple Books')?.url || '#'} 
-                    className="slist-nav-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img 
-                      className="img-app logo" 
-                      src={ibookIcon} 
-                      alt="Apple Books" 
-                    />
-                  </a>
-                </li>
-              </>
-            )}
-          </ul>
-        </div>
-      </div>
-    </li>
-  </div>
-));
-
-// Компонент пагінації
-const Pagination = memo(({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-  
-  if (totalPages <= 1) return null;
-  
-  const pages = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
-  
-  return (
-    <div className="pagination">
-      <button 
-        className="pagination-btn" 
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        &laquo; Попередня
-      </button>
-      
-      {pages.map(page => (
-        <button 
-          key={page} 
-          className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
-          onClick={() => onPageChange(page)}
-        >
-          {page}
-        </button>
-      ))}
-      
-      <button 
-        className="pagination-btn" 
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        Наступна &raquo;
-      </button>
-    </div>
-  );
-});
-
-Pagination.displayName = 'Pagination';
-
-// Встановлюємо displayName для компонента
-ShoppingListItem.displayName = 'ShoppingListItem';
+import styles from './ShoppingListPage.module.css';
 
 function ShoppingListPage() {
   const { loadedBooks, loading, removeFromShoppingList } = useShoppingList();
@@ -150,31 +35,31 @@ function ShoppingListPage() {
   }, [removeFromShoppingList]);
 
   return (
-    <div className="slist-section">
-      <div className="container">
-        <div className="shopping-list-content">
-          <div className="shopping-support">
+    <div className={styles.slistSection}>
+      <div className={styles.container}>
+        <div className={styles.shoppingListContent}>
+          <div className={styles.shoppingSupport}>
             <SupportUkraine />
           </div>
-          <div className="shopping-main">
-            <div className="slist-tittle-container">
-              <h1 className="slist-header">Shopping <span className="slist-header-span">List</span></h1>
+          <div className={styles.shoppingMain}>
+            <div className={styles.slistTittleContainer}>
+              <h1 className={styles.slistHeader}>Shopping <span className={styles.slistHeaderSpan}>List</span></h1>
             </div>
             
             {loading ? (
-              <div className="loader-container">
-                <div className="loader"></div>
+              <div className={styles.loaderContainer}>
+                <div className={styles.loader}></div>
               </div>
             ) : loadedBooks.length === 0 ? (
-              <div className="slist-demo-thumb">
-                <p className="slist-demo-text">
+              <div className={styles.slistDemoThumb}>
+                <p className={styles.slistDemoText}>
                   This page is empty, add some books and proceed to order.
                 </p>
                 <img src={booksImage} alt="Books" />
               </div>
             ) : (
               <>
-                <section className="slist-card-section">
+                <section className={styles.slistCardSection}>
                   {currentItems.map(book => (
                     <ShoppingListItem 
                       key={book._id}
