@@ -1,6 +1,7 @@
 import { useState, memo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import MobileMenu from './MobileMenu';
 import '../img/symbol-defs.svg';
 
 function Header() {
@@ -55,6 +56,7 @@ function Header() {
             type="button" 
             className={`menu-open-btn ${menuOpen ? 'hidden' : ''}`}
             onClick={toggleMenu}
+            aria-label="Open mobile menu"
           >
             <svg className="menu-open-icon" width="28" height="28">
               <use href="/src/img/symbol-defs.svg#icon-align-left"></use>
@@ -65,6 +67,7 @@ function Header() {
             type="button" 
             className={`menu-close-btn ${menuOpen ? '' : 'hidden'}`}
             onClick={toggleMenu}
+            aria-label="Close mobile menu"
           >
             <svg className="menu-close-icon" width="28" height="28">
               <use href="/src/img/symbol-defs.svg#icon-x-close"></use>
@@ -72,6 +75,9 @@ function Header() {
           </button>
         </div>
       </div>
+
+      {/* Мобільне меню */}
+      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }

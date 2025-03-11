@@ -1,189 +1,199 @@
+/* Mobile Menu Styles */
+.menu-modal {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: radial-gradient(
+        191.37% 191.09% at 60% -23%, 
+        rgb(79, 46, 232) 18.027%, 
+        rgb(255, 255, 255) 100%
+    );
+    box-shadow: 0px 10px 10px 0px rgba(245, 245, 247, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.name-caption {
+    position: absolute;
+    height: 37px;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    visibility: visible;
+}
+
+.menu-user-img {
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f6f6f6;
+}
+
+.menu-user-name {
+    color: rgb(255, 255, 255);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+}
+
+.menu-background-image {
+    position: absolute;
+    width: 450px;
+    height: 439px;
+    bottom: -64px;
+    right: -64px;
+    transform: rotate(-15deg);
+    background-image: url(../img/Group6.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.menu-central-links {
+    padding-top: 185px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-shopping-caption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-home-link,
+.menu-link.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 36px;
+    background: rgb(234, 198, 69);
+    color: rgb(17, 17, 17);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu-link {
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu-list-link {
+    color: rgb(255, 255, 255);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu-list-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.menu-shopping-svg {
+    fill: #fff;
+}
+
+.menu-signup-btn {
+    position: absolute;
+    top: 104px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    width: 184px;
+    height: 48px;
+    background: rgb(79, 46, 232);
+    border: 1.5px solid rgb(17, 17, 17);
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    visibility: visible;
+}
+
+.menu-logout-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 118px;
+    height: 48px;
+    background: rgb(255, 255, 255);
+    border: 1.5px solid rgb(17, 17, 17);
+    border-radius: 18px;
+    padding: 14px 24px;
+    color: rgb(17, 17, 17);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (min-width: 768px) {
     .menu-modal {
-        margin-top: 60px;
-        box-shadow: 0px 10px 10px 0px rgba(245, 245, 247, 0.1);
-        background: radial-gradient(191.37% 191.09% at 60% -23%, rgb(79, 46, 232) 18.027%, rgb(255, 255, 255) 100%)
-                /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-        width: 100%;
-        min-height: 100%;
-        position: absolute;
-            left: 0;
-            top: 0;
-        
-        overflow: hidden;
-
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-            transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        display: none;
     }
+}
 
-    .menu-is-open {
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
-            transform: translateY(0);
-            transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+/* Additional styles for the header component on mobile */
+@media screen and (max-width: 767px) {
+    .header-container {
+        padding: 0 20px;
     }
-
-    .name-caption {
-            position: absolute;
-            height: 37px;
-            left: 20px;
-            top: 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0px;
-
-            display: flex;
-            gap: 9px;
-            flex-direction: row;
-
-            visibility: hidden;
+    
+    .header-menu {
+        display: none;
     }
-
-    .menu-user-img {
-        height: 37px;
-        width: 37px;
-        border-radius: 50%;
+    
+    .signup-btn {
+        display: none;
     }
-
-    .menu-user-name {
-        color: rgb(255, 255, 255);
-            font-family: DM Sans;
-            font-size: 22px;
-            font-weight: 700;
-            line-height: 29px;
-            letter-spacing: -2%;
-            text-align: left;
-    }
-
-    .menu-background-image {
-        background-image: url(../img/Group6.png);
-            position: absolute;
-            width: 450px;
-            height: 439px;
-            top: 378px;
-            right: -65px;
-            transform: rotate(-15.00deg);
-            /* left: 35px;
-            bottom: -186px; */
-
-            border-radius: 8px;
-    }
-
-    .menu-central-links {
-        padding-top: 185px;
-        margin: 0 auto;
+    
+    .menu-open-btn,
+    .menu-close-btn {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        max-width: 100%;
-        gap: 17px;
-
-        visibility: visible;
     }
-
-    .menu-shopping-caption {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 4px;
-    }
-
-    .menu-home-link {
-        /* home */
-            position: static;
-            width: 72px;
-            height: 34px;
-            padding: 8px 16px 8px 16px;
-            border-radius: 36px;
-            background: rgb(234, 198, 69);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgb(17, 17, 17);
-                font-family: DM Sans;
-                font-size: 14px;
-                font-weight: 700;
-                line-height: 18px;
-                letter-spacing: -4%;
-                text-align: left;
-                text-transform: uppercase;
-    }
-
-    .menu-list-link {
-        color: rgb(255, 255, 255);
-            font-family: DM Sans;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 18px;
-            letter-spacing: -4%;
-            text-align: left;
-            text-transform: uppercase;
-    }
-
-    .menu-signup-btn {
-        display: flex;
-        align-items: center;
-        /* btn */
-            position: absolute;
-            padding-left: 14px;
-            width: 184px;
-            height: 48px;
-            left: 20px;
-            top: 104px;
-
-            color: rgb(255, 255, 255);
-                font-family: DM Sans;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 18px;
-                letter-spacing: -4%;
-                text-align: left;
-
-        box-sizing: border-box;
-            border: 1.5px solid rgb(17, 17, 17);
-            border-radius: 18px;
-        
-            background: rgb(79, 46, 232);
-
-        visibility: hidden;
-    }
-
-    .menu-logout-btn {
-            position: absolute;
-            width: 118px;
-            height: 48px;
-            left: 25px;
-            bottom: 25px;
-
-            box-sizing: border-box;
-                border: 1.5px solid rgb(17, 17, 17);
-                border-radius: 18px;
-            
-                background: rgb(255, 255, 255);
-            z-index: 1;
-        
-            color: rgb(17, 17, 17);
-                font-family: DM Sans;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 18px;
-                letter-spacing: -4%;
-                text-align: left;
-
-            padding: 15px 24px;
-
-            visibility: hidden;
-    }
-
-    .menu-shopping-svg {
-        fill: #fff;
-    }
+}

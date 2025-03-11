@@ -156,6 +156,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .header-naviganion {
@@ -233,39 +234,37 @@ a {
   align-items: center;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .menu-open-icon {
   display: block;
   stroke: #111;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
+  transition: stroke 0.3s ease;
 }
 
-.menu-open-icon:hover .menu-open-btn {
-  stroke: #4f2ee8;
-}
-
-.menu-open-icon:focus .menu-open-btn {
-  stroke: #4f2ee8;
-}
-
+.menu-open-btn:hover .menu-open-icon,
 .menu-open-btn:focus .menu-open-icon {
   stroke: #4f2ee8;
 }
 
-.menu-open-btn:hover .menu-open-icon {
-  stroke: #4f2ee8;
-}
-.menu-close-icon {
-  stroke: #111;
-}
-
 .menu-close-btn {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.menu-close-icon {
+  stroke: #111;
+  transition: stroke 0.3s ease;
+}
+
+.menu-close-btn:hover .menu-close-icon,
+.menu-close-btn:focus .menu-close-icon {
+  stroke: #4f2ee8;
 }
 
 .signup-btn {
@@ -275,7 +274,7 @@ a {
 .hidden {
   opacity: 0;
   visibility: hidden;
-  pointer-events: auto;
+  pointer-events: none;
   display: none;
 }
 
@@ -287,6 +286,10 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+  .header-container {
+    padding: 0 32px;
+  }
+
   .header-logo {
     padding-top: 22px;
     padding-bottom: 22px;
@@ -304,21 +307,15 @@ a {
     margin-right: 24px;
   }
 
-  .header-container {
-    min-width: 768px;
-    padding: 0 32px;
-    margin: 0 auto;
-  }
-
   .header-menu {
-    min-width: 100%;
     display: flex;
     gap: 16px;
     align-items: center;
-    justify-content: center;
+    margin-left: 40px;
   }
 
-  .header-menu-link {
+  .header-menu-link,
+  .header-menu-shopping {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -330,6 +327,7 @@ a {
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #111;
+    text-decoration: none;
   }
 
   .signup-btn {
@@ -341,15 +339,17 @@ a {
     width: 184px;
     height: 48px;
     background-color: #4f2ee8;
-    border: 1.5px solid var(--header-border-color);
+    border: 1.5px solid #111;
     border-radius: 18px;
-    font-family: DM Sans;
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
     color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
   .signup-btn:hover {
@@ -364,6 +364,7 @@ a {
   .header-container {
     max-width: 1440px;
     padding: 0 24px;
+    margin: 0 auto;
   }
 
   .theme-switch {
@@ -375,30 +376,7 @@ a {
   }
 
   .signup-btn {
-    border: 1.5px solid #111;
-    border-radius: 18px;
     min-width: 184px;
-    height: 48px;
-    background: #4f2ee8;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.04em;
-    color: #fff;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-  }
-
-  .signup-btn:hover {
-    border: 2px solid #4f2ee8;
-    border-radius: 12px;
-    filter: brightness(120%);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -413,4 +391,32 @@ a {
 
 .inactiveButton {
   display: flex;
+}
+
+/* Темна тема для хедера */
+.dark-theme .header {
+  background-color: #202024;
+  border-color: #ffffff;
+}
+
+.dark-theme .header-menu-link,
+.dark-theme .header-menu-shopping {
+  color: #ffffff;
+}
+
+.dark-theme .menu-open-icon,
+.dark-theme .menu-close-icon,
+.dark-theme .basket-icon {
+  stroke: #ffffff;
+}
+
+.dark-theme .menu-open-btn:hover .menu-open-icon,
+.dark-theme .menu-open-btn:focus .menu-open-icon,
+.dark-theme .menu-close-btn:hover .menu-close-icon,
+.dark-theme .menu-close-btn:focus .menu-close-icon {
+  stroke: #4f2ee8;
+}
+
+.dark-theme .activeButton {
+  color: #111111;
 }
