@@ -37,7 +37,8 @@
     visibility: visible;
 }
 
-.menu-user-img {
+.menu-user-img,
+.menu-user-icon {
     height: 37px;
     width: 37px;
     border-radius: 50%;
@@ -61,7 +62,7 @@
     bottom: -64px;
     right: -64px;
     transform: rotate(-15deg);
-    background-image: url(../img/Group6.png);
+    background-image: var(--menu-bg-image);
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 8px;
@@ -196,4 +197,9 @@
     .menu-close-btn {
         display: flex;
     }
+}
+
+/* Оновлюємо CSS змінну для шляху до фонового зображення */
+:root {
+  --menu-bg-image: url('/Group6.png');
 }

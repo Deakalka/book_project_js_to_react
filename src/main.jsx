@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './css/styles.css';
 
+// Імпортуємо основний SVG файл з іконками
+import './img/symbol-defs.svg';
+
 // Визначаємо базовий шлях для маршрутизації
 const basename = '/';
 

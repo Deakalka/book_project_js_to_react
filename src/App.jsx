@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import { ShoppingListProvider } from './contexts/ShoppingListContext';
+import SvgSprite from './components/SvgSprite';
 
 // Використовуємо lazy loading для сторінок
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -50,26 +51,29 @@ function App() {
       {loading ? (
         <PageLoader />
       ) : (
-        <Routes>
-          <Route path="/" element={<Layout onThemeToggle={toggleTheme} />}>
-            <Route index element={
-              <Suspense fallback={<PageLoader />}>
-                <HomePage />
-              </Suspense>
-            } />
-            <Route path="/shopping-list" element={
-              <Suspense fallback={<PageLoader />}>
-                <ShoppingListPage />
-              </Suspense>
-            } />
-            {/* Додаткові маршрути для обробки інших шляхів */}
-            <Route path="*" element={
-              <Suspense fallback={<PageLoader />}>
-                <HomePage />
-              </Suspense>
-            } />
-          </Route>
-        </Routes>
+        <div className={document.body.classList.contains('dark-theme') ? 'dark-theme' : ''}>
+          <SvgSprite />
+          <Routes>
+            <Route path="/" element={<Layout onThemeToggle={toggleTheme} />}>
+              <Route index element={
+                <Suspense fallback={<PageLoader />}>
+                  <HomePage />
+                </Suspense>
+              } />
+              <Route path="/shopping-list" element={
+                <Suspense fallback={<PageLoader />}>
+                  <ShoppingListPage />
+                </Suspense>
+              } />
+              {/* Додаткові маршрути для обробки інших шляхів */}
+              <Route path="*" element={
+                <Suspense fallback={<PageLoader />}>
+                  <HomePage />
+                </Suspense>
+              } />
+            </Route>
+          </Routes>
+        </div>
       )}
     </ShoppingListProvider>
   );
